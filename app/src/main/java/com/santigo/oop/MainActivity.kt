@@ -80,13 +80,18 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
 //        santi.die()
 */
 
-/*
+
         var bicho: Pokemon = Pokemon()
         println(bicho.getName())
         println(bicho.getAttackPower())
         bicho.setLife(30f)
         println(bicho.getLife())
-*/
+        bicho.cure()
+
+        var firePok: FirePokemon = FirePokemon()
+        firePok.sayBye()
+
+
             /*
             var atleta: Athlete = Athlete("Maradona","C12348","Fubtol")
             println(atleta.name)

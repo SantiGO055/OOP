@@ -6,7 +6,7 @@ open class Pokemon(
     protected var name: String = "Pok",
     protected var attackPower: Float = 30f,
     protected var life: Float = 100f,
-) {
+):Thanks() {
     // protected
 
     @SuppressLint("NotConstructor")
@@ -24,6 +24,10 @@ open class Pokemon(
     open fun attack(){
         println("ataqueeee!")}
 
+    fun cure(){
+        this.setLife(100f)
+        this.thanksCure()
+    }
 
 
 }
@@ -53,16 +57,39 @@ class Waterpokemon(name: String = "Pok",
 
 class FirePokemon(name: String = "Pok",
                   attackPower: Float = 30f,
-                  life: Float = 100f): Pokemon(name,attackPower,life) {
+                  life: Float = 100f): Pokemon(name,attackPower,life), sayBye {
       private var ballTemperature: Int = 90
 
-        @SuppressLint("NotConstructor")
+    //dato viene de sayBye
+    override var dato: Int
+        get() = TODO("Not yet implemented")
+        set(value) {}
+
+
+    @SuppressLint("NotConstructor")
         fun FirePokemon(bt: Int){
             this.ballTemperature = bt
 
         }
     override fun attack(){
         super.attack() // super es por la funcion superior del padre
-        println("ataqueeee!")}
+        println("ataqueeee!")
+    }
 
+
+}
+
+// abstract class solo se puede heredar de ella y no crear objetos
+abstract class Thanks(){
+    fun thanksCure(){
+        println("Gracias por curarme")
+    }
+}
+
+// puedo hacer multiple herencia con las interfaces
+interface sayBye{
+    var dato: Int // no posee constructor y debe ser inicializado en la herencia
+    fun sayBye(){
+        println("Byeee")
+    }
 }
