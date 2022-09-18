@@ -21,24 +21,48 @@ open class Pokemon(
     internal fun getLife(): Float { return this.life }
 
     internal fun setLife(l: Float){ this.life =  l}
+    open fun attack(){
+        println("ataqueeee!")}
+
 
 
 }
 // private no se hereda
 // protected se deja heredar
-class Waterpokemon(name: String = "Pok",attackPower: Float = 30f,life: Float = 100f):Pokemon(name,attackPower,life){
+class Waterpokemon(name: String = "Pok",
+                   attackPower: Float = 30f,
+                   life: Float = 100f):Pokemon(name,attackPower,life){
     private var maxResistance: Int = 500
     private var submergedTime: Int = 0
 
     fun sayHi(){ println("hola")}
 
-    fun Waterpokemon(name: String,attackPower: Float,mr:Int){
+    @SuppressLint("NotConstructor")
+    fun Waterpokemon(name: String, attackPower: Float, mr:Int){
         this.name = name
         this.attackPower = attackPower
         this.life = life
         this.maxResistance = mr
         this.sayHi()
     }
+    override fun attack(){
+        println("ataqueeee!")}
 
+
+}
+
+class FirePokemon(name: String = "Pok",
+                  attackPower: Float = 30f,
+                  life: Float = 100f): Pokemon(name,attackPower,life) {
+      private var ballTemperature: Int = 90
+
+        @SuppressLint("NotConstructor")
+        fun FirePokemon(bt: Int){
+            this.ballTemperature = bt
+
+        }
+    override fun attack(){
+        super.attack() // super es por la funcion superior del padre
+        println("ataqueeee!")}
 
 }
