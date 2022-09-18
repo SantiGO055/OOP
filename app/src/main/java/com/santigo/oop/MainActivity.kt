@@ -4,6 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
+
+    object santiago{
+        var apodo = "Santi"
+        fun saludo(){
+            println("Hola, me llaman ${apodo}")
+        }
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState) //Ejecuta onCreate del padre AppCompatActivity
         setContentView(R.layout.activity_main)
@@ -91,6 +100,79 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
         var firePok: FirePokemon = FirePokemon()
         firePok.attack()
         firePok.sayBye()
+
+        var sc = SubClasses()
+        println(sc.presentar())
+        //objeto de clase anidada
+        var ani = SubClasses.Anidada()
+        println(ani.presentar())
+
+        // objeto de tipo clase interna
+        var inn = SubClasses().Interna()
+        println(inn.presentar())
+
+
+        santiago.saludo()
+        santiago.apodo = "SantiGO"
+        santiago.saludo()
+
+
+        var sol: Star = Star("Sol",696340f,"Via Lactea")
+        println(sol)
+
+        var betelgeuse:Star = Star("Betelgeuse", 617100000f,"Orión")
+        betelgeuse.alive = false
+        println(betelgeuse.alive)
+
+        var nueva: Star = Star()
+        println(nueva)
+
+
+
+        var hoy: Dias = Dias.DOMINGO
+        var semana = Dias.values()
+        for (i in semana) println(i)
+
+        println(Dias.valueOf("MIERCOLES"))
+        println(hoy.name)
+        println(hoy.ordinal)
+
+        println(hoy.saludo())
+        println(hoy.jornada)
+        println(hoy.laboral)
+
+        var depor1: Deportista = Deportista("Depor1",1.70f,75.0f,25)
+        var runner1: Runner = Runner()
+        var ciclista1: Ciclista = Ciclista()
+        var nadador1: Nadador = Nadador("Nadador",1.70f,75.0f,25)
+        var triatleta: Triatleta = Triatleta("Triatleta",90f,80f,30,"Sincronizado","mountain bike",50,80,30)
+
+        depor1.competir()
+        depor1.descansar()
+        runner1.Runner("Runner",1.70f,75.0f,25,"trote",60)
+        runner1.correr()
+        runner1.competir()
+        runner1.descansar()
+        ciclista1.Ciclista("Ciclista",1.70f,75.0f,25,90)
+        ciclista1.pedalear()
+        ciclista1.competir()
+        ciclista1.descansar()
+        nadador1.Nadador("Nadador",1.70f,75.0f,25,"sincronizado",80)
+        nadador1.nadar()
+        nadador1.competir()
+        nadador1.descansar()
+
+        triatleta.correrTri()
+        triatleta.nadarTri()
+        triatleta.pedalearTri()
+        triatleta.competir()
+        triatleta.descansar()
+
+
+
+
+
+
 
 
 
