@@ -60,6 +60,10 @@ class FirePokemon(name: String = "Pok",
                   life: Float = 100f): Pokemon(name,attackPower,life), sayBye {
       private var ballTemperature: Int = 90
 
+    lateinit var ball : ballFire
+    var numBall: Int = 0
+
+
     //dato viene de sayBye
     override var dato: Int
         get() = TODO("Not yet implemented")
@@ -74,9 +78,15 @@ class FirePokemon(name: String = "Pok",
     override fun attack(){
         super.attack() // super es por la funcion superior del padre
         println("ataqueeee!")
+        println("Bola Nro ${++numBall}")
+        ball = ballFire(ballTemperature)
+        ball.throwBall()
     }
-
-
+}
+class ballFire(var t: Int = 100){
+    fun throwBall(){
+        println("Tirando bola con temperatura de $t")
+    }
 }
 
 // abstract class solo se puede heredar de ella y no crear objetos

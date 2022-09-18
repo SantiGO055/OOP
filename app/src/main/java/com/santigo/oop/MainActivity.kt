@@ -89,7 +89,9 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
         bicho.cure()
 
         var firePok: FirePokemon = FirePokemon()
+        firePok.attack()
         firePok.sayBye()
+
 
 
             /*
