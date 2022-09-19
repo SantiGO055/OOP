@@ -12,6 +12,24 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
         }
     }
 
+    private fun String.noSpaces(): String{
+        return this.replace(" ","")
+    }
+    private fun IntArray.show(){
+        println("[")
+        for (i in this) print("$i")
+        println("]")
+    }
+
+    private fun calculadora(n1 :Int, n2: Int, fn: (Int,Int)->Int) : Int{ //el famoso callback
+        return fn(n1,n2)
+    }
+
+    private fun suma(x: Int, y: Int): Int { return x+y }
+    private fun resta(x: Int, y: Int): Int { return x-y }
+    private fun multiplica(x: Int, y: Int) = x*y // como cuando declaro variable no hace falta indicar el tipo de dato
+    private fun divide(x: Int, y: Int) = x/y
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState) //Ejecuta onCreate del padre AppCompatActivity
@@ -89,7 +107,7 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
 //        santi.die()
 */
 
-
+/*
         var bicho: Pokemon = Pokemon()
         println(bicho.getName())
         println(bicho.getAttackPower())
@@ -167,12 +185,23 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
         triatleta.pedalearTri()
         triatleta.competir()
         triatleta.descansar()
+*/
 
 
+/*
+        var usuario = "      soy  yo        "
+        println("${usuario} (${usuario.length}) - ${usuario.noSpaces()} (${usuario.noSpaces().length})")
 
+        var arra1: Array<Int> = arrayOf(5,4,3,2,1)
+        var array2 = IntArray(3)
+        array2[0] = 10
+        array2[1] = 20
+        array2[2] = 30
+        println("array2: "); array2.show()
+        var array3: IntArray = intArrayOf(1,2,3,4,5)
+        println("array3: "); array3.show()
 
-
-
+        */
 
 
 
@@ -182,6 +211,10 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
             println(atleta.sport)
             */
 
-
+        // callbacks
+        println("La suma de 80 y 20 es ${calculadora(80,20,::suma)}")
+        println("La resta de 50 y 10 es ${calculadora(50,10,::resta)}")
+        println("La multiplicacion de 7 y 7 es ${calculadora(7,7,::multiplica)}")
+        println("La division de 12 y 3 es ${calculadora(12,3,::divide)}")
     }
 }
