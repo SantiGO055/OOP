@@ -6,7 +6,4 @@ data class Star(
     var galaxy: String= ""
 ){
     var alive = true
-
-
-
 }

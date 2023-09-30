@@ -2,6 +2,13 @@ package com.santigo.oop
 
 import android.annotation.SuppressLint
 
+
+/*
+* Tipos de modificadores:
+* Private no va a poder heredar nadie
+* Protected puede ser heredado
+*
+* */
 open class Deportista(protected var nombre: String = "",
                       protected var estatura : Float = 0f,
                       protected var peso : Float = 0f,
@@ -15,6 +22,7 @@ open class Deportista(protected var nombre: String = "",
     open fun competir(){
         println("Voy a competirrr")
     }
+    fun getName(): String {return this.getName()}
 }
 
 class Runner(nombre:String = "",
@@ -26,7 +34,6 @@ class Runner(nombre:String = "",
 {
         private var estilo: String = ""
 
-    @SuppressLint("NotConstructor")
     fun Runner(nombre: String,
                estatura: Float,
                peso: Float,
@@ -71,7 +78,6 @@ class Ciclista(nombre:String = "asd",
 ): Deportista(nombre,estatura,peso,edad)
 {
 
-    @SuppressLint("NotConstructor")
     fun Ciclista(nombre:String = "asd",
                  estatura: Float = 0f,
                  peso:Float = 0f,
@@ -120,7 +126,7 @@ class Nadador(nombre:String = "asd",
         this.velocidadNadar = velocidad
     }
     fun nadar(){
-        println("Pedalear en estilo ${estilo} a una velocidad de ${velocidadNadar}")
+        println("Nadar en estilo ${estilo} a una velocidad de ${velocidadNadar}")
     }
     override fun competir() {
         println("Voy a nadar!!!")
@@ -159,6 +165,7 @@ class Triatleta(nombre:String = "asd",
                 override var velocidadPedalear: Int = 1,
                 override var velocidadNadar: Int = 1
 ):Deportista(nombre,estatura,peso,edad),i_runner,i_ciclista,i_nadador{
+
     // Tódo este codigo de abajo se simplifica poniendo override var en constructor
 /*
     override var estilo: String

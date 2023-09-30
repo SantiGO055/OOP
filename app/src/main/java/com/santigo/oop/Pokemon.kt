@@ -70,7 +70,7 @@ class FirePokemon(name: String = "Pok",
         set(value) {}
 
 
-    @SuppressLint("NotConstructor")
+
         fun FirePokemon(bt: Int){
             this.ballTemperature = bt
 
@@ -103,7 +103,3 @@ interface sayBye{
         println("Byeee")
     }
 }
-
-
-
-

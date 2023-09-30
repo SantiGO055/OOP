@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
         return this.replace(" ","")
     }
     private fun IntArray.show(){
-        println("[")
+        println("[ ")
         for (i in this) print("$i")
-        println("]")
+        println(" ]")
     }
 
     private fun calculadora(n1 :Int, n2: Int, fn: (Int,Int)->Int) : Int{ //el famoso callback
@@ -29,6 +29,13 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
     private fun resta(x: Int, y: Int): Int { return x-y }
     private fun multiplica(x: Int, y: Int) = x*y // como cuando declaro variable no hace falta indicar el tipo de dato
     private fun divide(x: Int, y: Int) = x/y
+
+    private fun inArgentina(h: Float): Boolean{
+        return h>=1.6f
+    }
+    private fun inSpain(h: Float): Boolean{
+        return h>=1.65f
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,11 +100,14 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
         }
 */
 
-    /*
-//        var santi: Person = Person("Santiago","123asd45as")
-//        var anonimo: Person = Person()
-//
-//        anonimo.Person()
+
+        var santi: Person = Person("Santiago","123asd45as", 1.62f)
+        var anonimo: Person = Person()
+
+        anonimo.Person()
+        if (santi.checkPolicia ( ::inArgentina )) println("${santi.name} puede ser Policia en Argentina")
+        if (santi.checkPolicia ( ::inSpain )) println("${santi.name} puede ser Policia en Spain")
+
 //        println(anonimo.alive)
 //        println(anonimo.name)
 //        println(anonimo.passport)
@@ -105,7 +115,8 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
 //        println(santi.name)
 //        println(santi.passport)
 //        santi.die()
-*/
+
+
 
 /*
         var bicho: Pokemon = Pokemon()
@@ -186,6 +197,8 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
         triatleta.competir()
         triatleta.descansar()
 */
+        var depo: Deportista = Deportista("santi",1.75f, 75f,26)
+        var cicli: Ciclista = Ciclista()
 
 
 /*
@@ -211,10 +224,45 @@ class MainActivity : AppCompatActivity() { // hereda de AppCompatActivity
             println(atleta.sport)
             */
 
-        // callbacks
-        println("La suma de 80 y 20 es ${calculadora(80,20,::suma)}")
+        // callbacks lambdas
+        println("La suma de 80 y 20 es ${suma(80,20)}")
         println("La resta de 50 y 10 es ${calculadora(50,10,::resta)}")
         println("La multiplicacion de 7 y 7 es ${calculadora(7,7,::multiplica)}")
         println("La division de 12 y 3 es ${calculadora(12,3,::divide)}")
+
+        var funcion = { x:Int, y: Int -> x+y}
+        println("La suma de 80 y 20 es ${calculadora(80,20,funcion)}")
+
+
+        println("La suma de 80 y 20 con lambda es ${calculadora(80,20, { x:Int, y: Int -> x+ y})}")
+
+
+        println("La potencia de 2 elevado a 5 con lambda es ${calculadora(2,5
+        ) { x, y ->
+            var valor = 1
+            for (i in 1..y) valor *= x
+
+            valor // la ultima linea tiene que tener un valor
+        }
+        }")
+
+        var array4 = IntArray(10) { 5 }
+        println("array4: "); array4.show()
+
+        var array5 = IntArray(10) {
+            it
+        }
+        array5.show()
+
+
+        var array6 = IntArray(10) {
+            it+2
+        }
+        array6.show()
+        var array7 = IntArray(10) {
+            i->i*3
+        }
+        array7.show()
+
     }
 }
